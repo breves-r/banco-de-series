@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import ListeSeries from '../views/ListSeries.vue'
-import CreateeSeries from '../views/CreateSeries.vue'
+import CreateSeries from '../views/CreateSeries.vue'
 
 const routes = [
     {
@@ -11,7 +11,7 @@ const routes = [
     {
         path: '/create',
         name: 'Create',
-        component: CreateeSeries
+        component: CreateSeries
     }
 ]
 

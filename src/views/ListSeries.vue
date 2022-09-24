@@ -12,6 +12,7 @@
             <p>{{ serie.date }}</p>
             <p>{{ serie.genre }}</p>
             <p>{{ serie.review }}</p>
+            <button class="btn excluir" @click="deleteSerie(serie)">excluir</button>
           </span>
         </div>
       </div>
@@ -25,31 +26,22 @@
   
   <script>
 import PageTitle from "../components/PageTitle.vue";
+import { mapState } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "App",
   components: {
     PageTitle,
   },
-  data() {
-    return {
-      series: [
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"},
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"},
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"},
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"},
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"},
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"},
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"},
-        {name: "She-Hulk", date: "2022-09-23", genre: "Comédia", review: "Série muito boa", image: "https://bancodeseries.com.br/images/posters/17385.jpg"}
-      
-      ]
-    };
-  },
   methods: {
     add() {
       this.$router.push("/create");
-    }
+    },
+    ...mapActions('index', ['deleteSerie'])
+  },
+  computed: {
+    ...mapState('index', ['series'])
   }
 };
 </script>
@@ -77,6 +69,14 @@ h1 {
 .btn:hover {
   border: 1px solid cyan !important;
   color: cyan !important;
+}
+
+.excluir {
+  margin-bottom: 5px;
+}
+
+.excluir:hover {
+  background-color: #D8334A;
 }
 
 .series {

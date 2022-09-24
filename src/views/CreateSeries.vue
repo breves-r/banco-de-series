@@ -3,7 +3,7 @@
     <PageTitle/>
 	<h4>Adicione uma nova série!</h4>
 
-	<form class="form" @submit.prevent="addSerie()">
+	<form class="form" @submit.prevent="createSerie()">
     <div class="form-group">
       <label for="name">Nome da Série:</label>
       <input type="text" class="form-control" id="name" placeholder="Digite o nome da série" v-model="serie.name" required>
@@ -42,6 +42,7 @@
 
 <script>
 import PageTitle from '../components/PageTitle.vue'
+import { mapActions } from 'vuex'
 
 export default {
     components: {
@@ -60,8 +61,11 @@ export default {
       }
     },
     methods: {
-      addSerie() {
-        alert("Série adicionada!")
+      ...mapActions('index', ['addSerie']),
+      createSerie() {
+        this.addSerie(this.serie);
+        alert("Série adicionada!");
+        this.$router.push('/');
       }
     }
 }
